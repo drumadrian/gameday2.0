@@ -15,27 +15,26 @@ This project used OpenSearch Dashboards and Amazon CloudWatch Dashboards
 
 These steps are guidance and can be executed out of order by an experienced operator:
 
-* Install the resouces for Game Day 2.0 into your AWS Account using the Installer Script
-* Send data to the Amazon Kinesis stream using the Gameday 2.0 Data Generator App (the AWS Lambda function provided) 
+* Install the resouces for Game Day 2.0 into your AWS Account using the Deployment script
+* Create CloudWatch Event to trigger the Gameday 2.0 Data Generator App (the AWS Lambda function provided) 
 * Edit the frequency of the Amazon CloudWatch event (defaulted to 1 per day)
-* Create an Amazon Managed Grafana instance
-* Uninstall the resouces for Game Day 2.0 into your AWS Account using the UnInstaller Script
-	* The AWS Installer and AWS 
+* (Optional) Send data manually to the Amazon Kinesis stream using the Gameday 2.0 Data Generator App (the AWS Lambda function provided) 
+* Populate the CloudWatch Dashboard using the Game Day 2.0 data stored in Amazon CloudWatch
+* Create and Populate the Open Dashboard using the Game Day 2.0 data stored in the Amazon OpenSearch domain
+* (Optional) View the provisioned assets for the deployment by tag using Resource Groups in your AWS Console
+* Delete the resouces for Game Day 2.0 into your AWS Account using the Undeploy Script
 
 
 
 
 </br>
 
-###  Deployment (the AWS Installer) code: 
-###### (to be uploaed to ECR for Fargate):
+###  Run Deployment (the AWS Installer) script: 
+###### (to be run using the AWS CloudShell or AWS Cloud9):
 ```
-cd getcontainer
-aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $GET_REPOSITORY_URI
-docker build \
--t $GET_REPOSITORY_NAME:latest .
-docker tag $GET_REPOSITORY_NAME:latest $GET_REPOSITORY_URI:latest
-docker push $GET_REPOSITORY_URI:latest
+git clone https://github.com/drumadrian/gameday2.0.git
+cd gameday2.0
+bash deploy_gameday20.bash
 cd ..
 ```
 
@@ -44,22 +43,19 @@ cd ..
 
 </br>
 
-### Gameday 2.0 Un-Deployment code(the AWS Uninstaller): 
-###### (to be uploaed to ECR for Fargate):
+### Run Un-deployment (the AWS Installer) script: 
+###### (to be run using the AWS CloudShell or AWS Cloud9):
 ```
-cd getcontainer
-aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $GET_REPOSITORY_URI
-docker build \
--t $GET_REPOSITORY_NAME:latest .
-docker tag $GET_REPOSITORY_NAME:latest $GET_REPOSITORY_URI:latest
-docker push $GET_REPOSITORY_URI:latest
+git clone https://github.com/drumadrian/gameday2.0.git
+cd gameday2.0
+undeploy_gameday20.bash
 cd ..
 ```
 
 </br>
 
-### How to Manually adding Data using AWS Lambda: 
-###### (Use the provided AWS Lambda function Input Data to send a metric ):
+### How to Manually send Data using AWS Lambda: 
+###### (Use the provided AWS Lambda function to send a metric ):
 
 1) Copy the provided AWS Lambda function Input Data
 
@@ -70,7 +66,7 @@ AWS Lambda input data TBS
 TBS 
 
 ```
-2) Invoke the `gameday20manualinputdata` AWS Lambda function
+2) Invoke the `data_generator` AWS Lambda function using the data you copied
 
 3) Look for your data on the Dashboards
 
@@ -100,6 +96,10 @@ View on [YouTube](https://youtu.be/PtRwOCQ1zf8):   TBS
 ### References:
 
 https://docs.aws.amazon.com/kinesisanalytics/latest/dev/lambda-preprocessing.html
+
+https://aws.amazon.com/cloudshell/
+
+https://docs.aws.amazon.com/ARG/latest/APIReference/Welcome.html
 
 
 
