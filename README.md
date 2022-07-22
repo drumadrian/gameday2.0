@@ -116,6 +116,5 @@ https://stackoverflow.com/questions/61820968/adding-tags-to-multiple-sqs-queues-
 
 https://stackoverflow.com/a/73075388/2407387
 
-
-
+https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
 
