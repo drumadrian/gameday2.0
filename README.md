@@ -4,8 +4,8 @@ Game Day 2.0 - The ultimate live dashboard
 
 ## Summary
 
-The goal of this project is to quickly populate real-time dashboards
-This project used OpenSearch Dashboards and Amazon CloudWatch Dashboards
+The goal of this project is to populate real-time dashboards with streaming data.
+This project uses OpenSearch Dashboards and Amazon CloudWatch Dashboards
 
 
 ![diagram](gameday20.gif)
@@ -31,6 +31,15 @@ These steps are guidance and can be executed out of order by an experienced oper
 
 ###  Run Deployment (the AWS Installer) script: 
 ###### (to be run using the AWS CloudShell or AWS Cloud9):
+
+run this first to create the Deployment Asset Queue
+
+```
+deploymentid=YourUniqueID
+aws sqs create-queue --queue-name $deploymentid --tags tagger=adrianformation,deploymentid=$deploymentid
+```
+......then run 
+
 ```
 git clone https://github.com/drumadrian/gameday2.0.git
 cd gameday2.0
@@ -100,6 +109,12 @@ https://docs.aws.amazon.com/kinesisanalytics/latest/dev/lambda-preprocessing.htm
 https://aws.amazon.com/cloudshell/
 
 https://docs.aws.amazon.com/ARG/latest/APIReference/Welcome.html
+
+https://docs.aws.amazon.com/ARG/index.html
+
+https://stackoverflow.com/questions/61820968/adding-tags-to-multiple-sqs-queues-through-a-single-cli-command-or-a-script
+
+https://stackoverflow.com/a/73075388/2407387
 
 
 
