@@ -29,20 +29,32 @@ These steps are guidance and can be executed out of order by an experienced oper
 
 </br>
 
+## Cloudcraft Architecture Diagrams
+
+![Cloudcraft Diagram](diagram.png)
+
+[Live Cloudcraft Diagram](https://app.cloudcraft.co/view/ac0dc498-4432-434d-902d-c94c69ef7cb9?key=3m40jn0enpfd2t90)
+
+
+</br>
+
+
+
 ###  Run Deployment (the AWS Installer) script: 
 ###### (to be run using the AWS CloudShell or AWS Cloud9):
 
 run this first to create the Deployment Asset Queue
 
 ```
-deploymentid=YourUniqueID
-aws sqs create-queue --queue-name $deploymentid --tags tagger=adrianformation,deploymentid=$deploymentid
+aws sqs create-queue --queue-name <any_queue_name_you_choose> --tags tagger=adrianformation,customtagkey=customtagvalue
+
 ```
 ......then run 
 
 ```
 git clone https://github.com/drumadrian/gameday2.0.git
 cd gameday2.0
+export DEPLOYMENT_ASSET_QUEUE_URL=https://<your SQS queue URL from the create-queue CLI reponse>
 bash deploy_gameday20.bash
 cd ..
 ```
@@ -57,6 +69,7 @@ cd ..
 ```
 git clone https://github.com/drumadrian/gameday2.0.git
 cd gameday2.0
+export DEPLOYMENT_ASSET_QUEUE_URL=https://<your SQS queue URL from the create-queue CLI reponse>
 undeploy_gameday20.bash
 cd ..
 ```
@@ -82,14 +95,15 @@ TBS
 
 </br>
 
-## Cloudcraft Architecture Diagrams
+## Cloudcraft Deployment Diagrams
 
-![Cloudcraft Diagram](diagram.png)
+![Cloudcraft Diagram](gameday20deploymentdiagram.png)
 
-[Live Cloudcraft Diagram](https://app.cloudcraft.co/view/ac0dc498-4432-434d-902d-c94c69ef7cb9?key=3m40jn0enpfd2t90)
+[Live Cloudcraft Diagram](https://app.cloudcraft.co/view/f92edcee-3b1b-451b-b4a8-5a6d8d713056?key=8b3a1802-d067-4198-b1da-141383fce98f)
 
 
 </br>
+
 
 ## Tutorial Video on YouTube
 
@@ -117,4 +131,9 @@ https://stackoverflow.com/questions/61820968/adding-tags-to-multiple-sqs-queues-
 https://stackoverflow.com/a/73075388/2407387
 
 https://stackoverflow.com/questions/1349404/generate-random-string-characters-in-javascript
+
+https://nodejs.dev/learn/how-to-exit-from-a-nodejs-program
+
+https://web.dev/promises/
+
 
