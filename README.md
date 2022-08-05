@@ -54,7 +54,7 @@ aws sqs create-queue --queue-name <any_queue_name_you_choose> --tags tagger=adri
 ```
 git clone https://github.com/drumadrian/gameday2.0.git
 cd gameday2.0
-export DEPLOYMENT_ASSET_QUEUE_URL=https://<your SQS queue URL from the create-queue CLI reponse>
+export ASSET_QUEUE_URL=https://<your SQS queue URL from the create-queue CLI reponse>
 bash deploy_gameday20.bash
 cd ..
 ```
@@ -69,7 +69,7 @@ cd ..
 ```
 git clone https://github.com/drumadrian/gameday2.0.git
 cd gameday2.0
-export DEPLOYMENT_ASSET_QUEUE_URL=https://<your SQS queue URL from the create-queue CLI reponse>
+export ASSET_QUEUE_URL=https://<your SQS queue URL from the create-queue CLI reponse>
 undeploy_gameday20.bash
 cd ..
 ```
@@ -134,6 +134,16 @@ https://stackoverflow.com/questions/1349404/generate-random-string-characters-in
 
 https://nodejs.dev/learn/how-to-exit-from-a-nodejs-program
 
+https://www.digitalocean.com/community/tutorials/understanding-variables-scope-hoisting-in-javascript
+
 https://web.dev/promises/
+
+
+
+
+
+https://www.freecodecamp.org/news/javascript-console-log-example-how-to-print-to-the-console-in-js/
+https://web.dev/promises/
+
 
 
