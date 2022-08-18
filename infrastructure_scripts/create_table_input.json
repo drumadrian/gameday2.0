@@ -1,0 +1,35 @@
+{
+    "TableName": "gamedayassets",
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "assetid",
+            "AttributeType": "S"
+        }
+    ],
+    "KeySchema": [
+        {
+            "AttributeName": "assetid",
+            "KeyType": "HASH"
+        }
+    ],
+    "BillingMode": "PROVISIONED",
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    },
+    "Tags": [
+        {
+            "Key": "tagger",
+            "Value": "adrianformation"
+        },
+        {
+            "Key": "App",
+            "Value": "GameDay 2.0"
+        },
+        {
+            "Key": "assetname",
+            "Value": "dynammodb"
+        }
+    ],
+    "TableClass": "STANDARD_INFREQUENT_ACCESS"
+}

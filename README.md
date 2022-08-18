@@ -138,12 +138,61 @@ https://www.digitalocean.com/community/tutorials/understanding-variables-scope-h
 
 https://web.dev/promises/
 
+https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/Firehose.html#createDeliveryStream-property
+
 
 
 
 
 https://www.freecodecamp.org/news/javascript-console-log-example-how-to-print-to-the-console-in-js/
 https://web.dev/promises/
+
+https://www.w3schools.com/jsref/met_win_settimeout.asp
+
+https://developer.mozilla.org/en-US/docs/Web/API/console/table
+
+https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-skeleton.html
+
+https://docs.aws.amazon.com/cli/latest/reference/dynamodb/create-table.html
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+
+https://docs.aws.amazon.com/cli/latest/reference/firehose/put-record.html
+
+https://web.dev/promises/
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+https://docs.aws.amazon.com/code-samples/latest/catalog/javascriptv3-cloudwatch-src-putMetricData.js.html
+
+
+
+
+
+
+
+
+
+
+## CLI Provisioning Commands
+
+Create the Adrianformation Asset database:
+
+```
+
+aws dynamodb create-table --cli-input-json file://create_table_input.json
+
+  
+```
+
+
+
+
+
+
+
+
+
 
 
 

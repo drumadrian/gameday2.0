@@ -5,28 +5,23 @@ var AWS = require('aws-sdk');
 // Steps: 
 // 1. Check Environment Variables
 // 2. Create a Kinesis Stream 
-// 2. Create AWS Assets then add a new message to the SQS queue
+// 2. Create and Tag AWS Assets then add the new Asset message to the SQS queue
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-async function main() {
-  // Set the region explicitly to avoid ambiguity during the resolution of the endpoint
-  let awsConfigRegion = 'us-west-2';
+async function create_input_kinesis_stream() {
+  let awsConfigRegion = 'us-west-2';    // Set the region explicitly to avoid ambiguity during the resolution of the endpoint
   AWS.config.update({region: awsConfigRegion});
-
   const ASSET_QUEUE_URL = await get_assetqueueUrl();
   const AWSACCOUNTNUMBER = await get_awsAccountNumber();
-      
   let assetId = await makeid(4);
-  
   console.log('\n\nassetId=', assetId);
-
   let asset = await createKinesisStream(awsConfigRegion, AWSACCOUNTNUMBER, 'input kinesis stream', assetId, ASSET_QUEUE_URL);
   await tagKinesisStream(asset);
   await addAssetToQueue(asset);
 
 };
-main();
+create_input_kinesis_stream();
 
 async function get_assetqueueUrl() {
   // Set Deployment Asset Queue URL from environment variable
@@ -43,7 +38,7 @@ async function get_assetqueueUrl() {
   };
 
   // return myPromise;
-};
+}; //END get_assetqueueUrl
 
 async function createKinesisStream(awsConfigRegion, AWSACCOUNTNUMBER, assetName, assetId, ASSET_QUEUE_URL) {
   let asset = {};
@@ -139,7 +134,7 @@ async function get_awsAccountNumber() {
     });
   });
   return promise;
-};
+}; //END createKinesisStream
 
 async function addAssetToQueue(Asset) {
   let promise = new Promise(resolve => {
@@ -162,7 +157,7 @@ async function addAssetToQueue(Asset) {
     };
   });
 return promise;
-};
+}; //END get_awsAccountNumber
 
 function successCallback(err, sendMessageCallbackData) {
   if (err) 
@@ -173,7 +168,7 @@ function successCallback(err, sendMessageCallbackData) {
     {
       console.log(sendMessageCallbackData);           // successful response
     }
-};
+}; //END successCallback
 
 async function makeid(length) {
   let promise = new Promise(resolve => {
@@ -186,7 +181,7 @@ async function makeid(length) {
     resolve(result);
   });// END of promise
   return promise;
-};
+}; //END makeid
 
 
 
